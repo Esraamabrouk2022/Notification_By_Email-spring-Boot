@@ -5,6 +5,7 @@ import com.example.email.entity.Status;
 import com.example.email.repository.MailRepository;
 import com.example.email.service.EmailService;
 import jakarta.mail.MessagingException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -13,12 +14,12 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-
+@RequiredArgsConstructor
 public class EmailJob {
-    @Autowired
-    private EmailService emailService;
-    @Autowired
-    private MailRepository mailRepository;
+
+    private final EmailService emailService;
+
+    private final MailRepository mailRepository;
 
 
     @Scheduled(fixedRate = 600000)//every 10 min

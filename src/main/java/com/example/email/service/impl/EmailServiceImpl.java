@@ -1,11 +1,13 @@
-package com.example.email.service;
+package com.example.email.service.impl;
 
 import com.example.email.entity.Email;
 import com.example.email.entity.Status;
 import com.example.email.repository.MailRepository;
+import com.example.email.service.EmailService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +20,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 @Service
+@RequiredArgsConstructor
 public class EmailServiceImpl implements EmailService {
 
-    @Autowired
-    MailRepository mailRepo;
-    @Autowired
-    private JavaMailSender mailSender;
+
+    private final MailRepository mailRepo;
+
+    private final JavaMailSender mailSender;
 
     @Override
     public ResponseEntity<String> sendEmail(Email email) throws RuntimeException, MessagingException {

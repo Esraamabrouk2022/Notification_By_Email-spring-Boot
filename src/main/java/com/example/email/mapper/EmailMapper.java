@@ -7,7 +7,7 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface EmailMapper {
-      EmailMapper INSTANCE = Mappers.getMapper(EmailMapper.class);
+    //  EmailMapper INSTANCE = Mappers.getMapper(EmailMapper.class);
 
       Email requestToEntity(EmailModel emailModel) ;
 }

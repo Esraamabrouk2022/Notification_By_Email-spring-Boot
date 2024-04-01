@@ -5,6 +5,7 @@ import com.example.email.mapper.EmailMapper;
 import com.example.email.service.EmailService;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/email")
+@RequiredArgsConstructor
 public class MailResource {
-    @Autowired
-    EmailService emailService;
-    @Autowired
-    EmailMapper emailMapper;
+
+    final EmailService emailService;
+    final EmailMapper emailMapper;
 
     @PostMapping("/send")
     public ResponseEntity<String> sendEmail(@Valid @RequestBody EmailModel emailRequest) throws MessagingException {
